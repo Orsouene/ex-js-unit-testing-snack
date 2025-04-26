@@ -9,3 +9,13 @@ test("funzione createSlug restituisce una stringa in lowercase",()=>{
   const result = createSlug("HOME PAGE");
   expect(result).toBe("home page")
 });
+//!!!!!!!!!!!!!!!!!!!!!!!Snack-3
+
+const array = [5,5,5,5]
+ const avrage=(arr)=>arr.reduce((acc,curr)=>acc+=curr,0)/arr.length
+
+test("La funzione average calcola la media aritmetica di un array di numeri.",()=>{
+  const result = avrage(array);
+  expect(result).toBe(5)
+
+});
