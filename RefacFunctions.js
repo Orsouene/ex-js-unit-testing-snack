@@ -6,7 +6,15 @@ const getInitials = (nome) => {
 };
 //!Snack-2
 const createSlug = (slug) => {
-  return slug.toLowerCase();
+   const retSlug = slug.toLowerCase().replaceAll(" ","-")
+
+   return retSlug
+   
+};
+//!Snack-4
+const palindrome = (text) => {
+  const inversa = text === text.split("").reverse().join("");
+  return inversa;
 };
 
-module.exports = { getInitials, createSlug };
+module.exports = { getInitials, createSlug, palindrome };
