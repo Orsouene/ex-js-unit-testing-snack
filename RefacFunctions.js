@@ -6,15 +6,32 @@ const getInitials = (nome) => {
 };
 //!Snack-2
 const createSlug = (slug) => {
-   const retSlug = slug.toLowerCase().replaceAll(" ","-")
-
-   return retSlug
-   
+  if (!slug) throw new Error("slug non valido");
+  return slug.toLowerCase().replaceAll(" ", "-");
 };
-//!Snack-4
+
+//!Snack-5
+
 const palindrome = (text) => {
   const inversa = text === text.split("").reverse().join("");
-  return inversa;
+  return text=inversa;
+};
+//!Snack-7
+
+const findPostById = (posts,id) => {
+  if(isNaN(id)){ throw new Error("id non valido")}
+
+    posts.forEach(element =>  {    if (  element.id === undefined ||
+    element.title === undefined ||
+    element.slug === undefined) {
+      throw new Error("posts non valido ")
+    }
+  })
+    
+ return  posts.find((myPost) => myPost.id === id);
+
+
+
 };
 
-module.exports = { getInitials, createSlug, palindrome };
+module.exports = { getInitials, createSlug, palindrome, findPostById };
