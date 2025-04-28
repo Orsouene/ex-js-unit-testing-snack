@@ -4,17 +4,23 @@ const {
   palindrome,
   findPostById,
   avrage,
+  addPost,
+  removePost,
 } = require("./RefacFunctions");
 
 
-const array = [5,5,5,5]
- const posts = [
+ const array = [5,5,5,5]
+ let posts;
+
+beforeEach(()=>{
+posts = [
   { id: 1, title: "post1", slug: "Questo è il post 1" },
   { id: 2, title: "post2", slug: "Questo è il post 2" },
   { id: 3, title: "post3", slug: "Questo è il post 3" },
 ];
+})
 
-
+//!"Describe per Test per la manipolazione degli array"
 describe("Test per la manipolazione degli array",()=>{
   //?**********************************************?Snack-3
   test("La funzione average calcola la media aritmetica di un array di numeri.", () => {
@@ -31,8 +37,21 @@ describe("Test per la manipolazione degli array",()=>{
     expect(() => findPostById(posts, "ciao")).toThrow("id non valido");
     expect(() => findPostById([50, 60], 1)).toThrow("posts non valido");
   });
+
+  //?************************************************?Bonus
+  test(
+    "Dopo aver aggiunto un post con la funzione addPost, l'array posts deve contenere un elemento in più.",()=>{
+      expect(addPost(posts)).toHaveLength(4)
+    });
+
+  test("Dopo aver rimosso un post con la funzione removePost, l'array posts deve contenere un elemento in meno.", () => {
+    expect(removePost(posts,3)).toHaveLength(2);
+  });
+
+    
 });
 
+//!"Test per la genrazione delle slug"
 describe("Test per la genrazione delle slug",()=>{
   //?**********************************************?Snack-2
   test("funzione createSlug restituisce una stringa in lowercase e sostituisce gli spazi con -", () => {
@@ -50,7 +69,7 @@ describe("Test per la genrazione delle slug",()=>{
     expect(result).toBe("home-page-1");
   });
 });
-
+//!"Test per la manipolazione dei stinghe"
 describe("Test per la manipolazione dei stinghe",()=>{
   //?**********************************************?Snack-1
   test("funzione che restituisce le iniziali di un nome completo", () => {

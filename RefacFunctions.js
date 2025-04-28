@@ -36,5 +36,21 @@ const findPostById = (posts,id) => {
 
 
 };
+const addPost =(posts)=>{
+ posts.push({ id: 4, title: "post4", slug: "Questo è il post 4" })
+  return posts
+}
+const removePost =(posts,id)=>{
+const newPost = posts.filter(post=>post.id!==id)
+  return newPost;
+}
 
-module.exports = { getInitials, createSlug, palindrome, findPostById, avrage };
+module.exports = {
+  getInitials,
+  createSlug,
+  palindrome,
+  findPostById,
+  avrage,
+  addPost,
+  removePost,
+};
