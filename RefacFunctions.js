@@ -9,7 +9,10 @@ const createSlug = (slug) => {
   if (!slug) throw new Error("slug non valido");
   return slug.toLowerCase().replaceAll(" ", "-");
 };
+//!Snack-4
 
+const avrage = (arr) =>
+  arr.reduce((acc, curr) => (acc += curr), 0) / arr.length;
 //!Snack-5
 
 const palindrome = (text) => {
@@ -34,4 +37,4 @@ const findPostById = (posts,id) => {
 
 };
 
-module.exports = { getInitials, createSlug, palindrome, findPostById };
+module.exports = { getInitials, createSlug, palindrome, findPostById, avrage };
