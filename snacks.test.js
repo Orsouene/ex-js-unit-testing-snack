@@ -38,17 +38,26 @@ describe("Test per la manipolazione degli array",()=>{
     expect(() => findPostById([50, 60], 1)).toThrow("posts non valido");
   });
 
-  //?************************************************?Bonus
-  test(
-    "Dopo aver aggiunto un post con la funzione addPost, l'array posts deve contenere un elemento in più.",()=>{
-      expect(addPost(posts)).toHaveLength(4)
-    });
-
-  test("Dopo aver rimosso un post con la funzione removePost, l'array posts deve contenere un elemento in meno.", () => {
-    expect(removePost(posts,3)).toHaveLength(2);
+  //?************************************************?Bonus-8
+  test("Dopo aver aggiunto un post con la funzione addPost, l'array posts deve contenere un elemento in più.", () => {
+    expect(
+      addPost(posts, { id: 4, title: "post4", slug: "Questo è il post 4" })
+    ).toHaveLength(4);
   });
 
-    
+  test("Dopo aver rimosso un post con la funzione removePost, l'array posts deve contenere un elemento in meno.", () => {
+    expect(removePost(posts, 3)).toHaveLength(2);
+  });
+  //?************************************************?Bonus-9
+    test("Se si tenta di aggiungere un post con un id o uno slug già esistente, la funzione addPost deve lanciare un errore.", () => {
+      expect(() =>
+        addPost(posts, { id: 2, title: "post4", slug: "Questo è il post 2" })
+      ).toThrow("id già esistente");
+      expect(() =>
+        addPost(posts, { id: 4, title: "post4", slug: "Questo è il post 2" })
+      ).toThrow("slug già esistente");
+
+    });
 });
 
 //!"Test per la genrazione delle slug"

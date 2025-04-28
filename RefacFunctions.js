@@ -36,9 +36,19 @@ const findPostById = (posts,id) => {
 
 
 };
-const addPost =(posts)=>{
- posts.push({ id: 4, title: "post4", slug: "Questo è il post 4" })
-  return posts
+const addPost =(posts,post)=>{
+
+posts.forEach(el=>{
+  if(el.id===post.id ) {
+    throw new Error("id già esistente")
+  }
+  else if (el.slug === post.slug) {
+    throw new Error("slug già esistente");
+  }
+  
+})
+ posts.push(post);
+return posts
 }
 const removePost =(posts,id)=>{
 const newPost = posts.filter(post=>post.id!==id)
